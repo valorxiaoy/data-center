@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iyungu.vertx.server.dao.SysLoginMapper">
+  <resultMap id="BaseResultMap" type="com.iyungu.vertx.server.bean.po.SysLogin">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="system_in_code" jdbcType="INTEGER" property="systemInCode" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="reviser" jdbcType="VARCHAR" property="reviser" />
+    <result column="revise_time" jdbcType="TIMESTAMP" property="reviseTime" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="login_type" jdbcType="INTEGER" property="loginType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, login_name, pwd, salt, system_in_code, token, creater, create_time, 
+    reviser, revise_time, last_login_time, login_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_login
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_login
+    where login_name = #{loginName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_login
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.iyungu.vertx.server.bean.po.SysLogin">
+    insert into sys_login (id, user_id, login_name, 
+      pwd, salt, system_in_code, 
+      token, creater, create_time, 
+      reviser, revise_time, last_login_time, 
+      login_type)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{systemInCode,jdbcType=INTEGER}, 
+      #{token,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{reviser,jdbcType=VARCHAR}, #{reviseTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{loginType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iyungu.vertx.server.bean.po.SysLogin">
+    insert into sys_login
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="loginName != null">
+        login_name,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="systemInCode != null">
+        system_in_code,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="creater != null">
+        creater,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="reviser != null">
+        reviser,
+      </if>
+      <if test="reviseTime != null">
+        revise_time,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="loginType != null">
+        login_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="systemInCode != null">
+        #{systemInCode,jdbcType=INTEGER},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null">
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviser != null">
+        #{reviser,jdbcType=VARCHAR},
+      </if>
+      <if test="reviseTime != null">
+        #{reviseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginType != null">
+        #{loginType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iyungu.vertx.server.bean.po.SysLogin">
+    update sys_login
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null">
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="systemInCode != null">
+        system_in_code = #{systemInCode,jdbcType=INTEGER},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null">
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviser != null">
+        reviser = #{reviser,jdbcType=VARCHAR},
+      </if>
+      <if test="reviseTime != null">
+        revise_time = #{reviseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginType != null">
+        login_type = #{loginType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iyungu.vertx.server.bean.po.SysLogin">
+    update sys_login
+    set user_id = #{userId,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      system_in_code = #{systemInCode,jdbcType=INTEGER},
+      token = #{token,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      reviser = #{reviser,jdbcType=VARCHAR},
+      revise_time = #{reviseTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      login_type = #{loginType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
