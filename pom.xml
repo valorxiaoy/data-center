@@ -14,7 +14,7 @@
         <vertx.version>3.5.1</vertx.version>
         <druid.version>1.0.23</druid.version>
         <main.class>io.vertx.core.Launcher</main.class>
-        <main.verticle>com.iyungu.vertx.MainVerticle</main.verticle>
+        <main.verticle>com.iyungu.vertx.main.VertxApplication</main.verticle>
     </properties>
 
     <dependencies>

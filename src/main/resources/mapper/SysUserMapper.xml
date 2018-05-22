@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.iyungu.vertx.server.dao.SysUserMapper">
-  <resultMap id="BaseResultMap" type="com.iyungu.vertx.server.bean.po.SysUser">
+<mapper namespace="com.iyungu.vertx.main.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.iyungu.vertx.main.bean.po.SysUser">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="mobile" jdbcType="VARCHAR" property="mobile" />
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
@@ -30,7 +30,7 @@
     delete from sys_user
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.iyungu.vertx.server.bean.po.SysUser">
+  <insert id="insert" parameterType="com.iyungu.vertx.main.bean.po.SysUser">
     insert into sys_user (id, mobile, nick_name, 
       user_name, identity_card, birthday, 
       sex, profession, img_src, 
@@ -42,7 +42,8 @@
       #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{reviser,jdbcType=VARCHAR}, 
       #{reviseTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.iyungu.vertx.server.bean.po.SysUser">
+  <insert id="insertSelective" parameterType="com.iyungu.vertx.main.bean.po.SysUser" useGeneratedKeys="true"
+          keyProperty="id" keyColumn="id">
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -127,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.iyungu.vertx.server.bean.po.SysUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.iyungu.vertx.main.bean.po.SysUser">
     update sys_user
     <set>
       <if test="mobile != null">
@@ -169,7 +170,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.iyungu.vertx.server.bean.po.SysUser">
+  <update id="updateByPrimaryKey" parameterType="com.iyungu.vertx.main.bean.po.SysUser">
     update sys_user
     set mobile = #{mobile,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},

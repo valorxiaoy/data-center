@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.iyungu.vertx.server.dao.SysLoginMapper">
-  <resultMap id="BaseResultMap" type="com.iyungu.vertx.server.bean.po.SysLogin">
+<mapper namespace="com.iyungu.vertx.main.dao.SysLoginMapper">
+  <resultMap id="BaseResultMap" type="com.iyungu.vertx.main.bean.po.SysLogin">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="login_name" jdbcType="VARCHAR" property="loginName" />
@@ -36,7 +36,7 @@
     delete from sys_login
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.iyungu.vertx.server.bean.po.SysLogin">
+  <insert id="insert" parameterType="com.iyungu.vertx.main.bean.po.SysLogin">
     insert into sys_login (id, user_id, login_name, 
       pwd, salt, system_in_code, 
       token, creater, create_time, 
@@ -48,7 +48,7 @@
       #{reviser,jdbcType=VARCHAR}, #{reviseTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
       #{loginType,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.iyungu.vertx.server.bean.po.SysLogin">
+  <insert id="insertSelective" parameterType="com.iyungu.vertx.main.bean.po.SysLogin">
     insert into sys_login
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -133,7 +133,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.iyungu.vertx.server.bean.po.SysLogin">
+  <update id="updateByPrimaryKeySelective" parameterType="com.iyungu.vertx.main.bean.po.SysLogin">
     update sys_login
     <set>
       <if test="userId != null">
@@ -175,7 +175,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.iyungu.vertx.server.bean.po.SysLogin">
+  <update id="updateByPrimaryKey" parameterType="com.iyungu.vertx.main.bean.po.SysLogin">
     update sys_login
     set user_id = #{userId,jdbcType=VARCHAR},
       login_name = #{loginName,jdbcType=VARCHAR},

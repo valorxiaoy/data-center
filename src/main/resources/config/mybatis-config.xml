@@ -18,7 +18,7 @@
         <environment id="development">
             <!-- 配置数据库连接信息 -->
             <transactionManager type="JDBC"/>
-            <dataSource type="com.iyungu.vertx.config.MyselfDefineDataSourceFactory">
+            <dataSource type="com.iyungu.vertx.base.mybatis.factory.MyselfDefineDataSourceFactory">
                 <!--<property name="driver" value="com.mysql.jdbc.Driver}"/>-->
                 <property name="url" value="${url}"/>
                 <property name="username" value="${username}"/>
