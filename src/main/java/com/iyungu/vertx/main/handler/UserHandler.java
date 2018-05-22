@@ -1,6 +1,5 @@
 package com.iyungu.vertx.main.handler;
 
-import com.iyungu.vertx.base.BusinessException;
 import com.iyungu.vertx.base.ResponseUtil;
 import com.iyungu.vertx.base.annotation.bean.RequestMethod;
 import com.iyungu.vertx.base.annotation.request.RequestMapping;
@@ -39,10 +38,8 @@ public class UserHandler {
             logger.debug("/user/:id return;");
             ResponseUtil.success(routingContext, sysUser);
         } catch (Exception ex) {
-            throw new BusinessException("方法异常. ex : " + ex.getMessage(), ex);
-        } finally {
-            logger.debug("/user/registered return;");
             ResponseUtil.failedService(routingContext, sysUser);
+            ex.printStackTrace();
         }
     }
 
@@ -58,11 +55,10 @@ public class UserHandler {
                 String userId = sysUser.getId();
                 isRegistered = sysLoginService.bindUser(loginId, userId);
             }
+            ResponseUtil.success(routingContext, isRegistered);
         } catch (Exception ex) {
-            throw new BusinessException("方法异常. ex : " + ex.getMessage(), ex);
-        } finally {
-            logger.debug("/user/registered return;");
             ResponseUtil.failedService(routingContext, isRegistered);
+            ex.printStackTrace();
         }
     }
 }
